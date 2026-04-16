@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Le Carnet du Barman — Guide des 20 Cocktails Classiques</title>
+  <meta name="description" content="Guide de dosage de 20 cocktails classiques : recettes, verres, méthodes et garnitures. Style speakeasy." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================
+       TOKENS & RESET
+       ============================================ */
+    :root {
+      --bg-deep: #0b0705;
+      --bg-soft: #120c08;
+      --bg-card: #1a110b;
+      --bg-card-hover: #221610;
+      --line: rgba(198, 159, 106, 0.18);
+      --line-strong: rgba(198, 159, 106, 0.45);
+
+      --gold: #c69f6a;
+      --gold-soft: #d9b988;
+      --gold-dim: #8e6f46;
+      --copper: #b87333;
+      --burgundy: #6d1f2a;
+
+      --text: #efe6d7;
+      --text-dim: #b6a78e;
+      --text-muted: #7a6e5a;
+
+      --serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+      --serif-alt: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+      --radius: 4px;
+      --radius-lg: 10px;
+      --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.55), 0 1px 0 rgba(255, 255, 255, 0.02) inset;
+      --shadow-card-hover: 0 18px 50px rgba(0, 0, 0, 0.75), 0 0 0 1px var(--line-strong) inset;
+
+      --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg-deep);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Ambient background — subtle vignette + grain */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(1200px 600px at 15% -10%, rgba(198, 159, 106, 0.08), transparent 60%),
+        radial-gradient(900px 500px at 110% 20%, rgba(109, 31, 42, 0.18), transparent 55%),
+        radial-gradient(800px 600px at 50% 120%, rgba(184, 115, 51, 0.07), transparent 60%);
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.035;
+      mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.8  0 0 0 0 0.65  0 0 0 0 0.4  0 0 0 0.6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    }
+
+    main, header, footer, section { position: relative; z-index: 1; }
+
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { color: var(--gold-soft); }
+
+    ::selection { background: var(--gold); color: var(--bg-deep); }
+
+    /* ============================================
+       LAYOUT
+       ============================================ */
+    .wrap {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* ============================================
+       HEADER / HERO
+       ============================================ */
+    .site-header {
+      padding: 72px 0 40px;
+      text-align: center;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.25) 100%);
+    }
+
+    .brand-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--gold);
+      font-family: var(--serif);
+      font-style: italic;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+    .brand-mark::before,
+    .brand-mark::after {
+      content: '';
+      display: inline-block;
+      width: 40px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+    }
+
+    .site-title {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+      line-height: 1.05;
+      margin: 18px 0 14px;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+    .site-title em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--gold);
+    }
+
+    .site-tagline {
+      font-family: var(--serif-alt);
+      font-style: italic;
+      font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+      color: var(--text-dim);
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .divider-ornament {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin: 28px auto 0;
+      color: var(--gold-dim);
+    }
+    .divider-ornament .line {
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-dim));
+    }
+    .divider-ornament .line + .line {
+      background: linear-gradient(90deg, var(--gold-dim), transparent);
+    }
+    .divider-ornament .diamond {
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      transform: rotate(45deg);
+    }
+
+    /* ============================================
+       FILTERS
+       ============================================ */
+    .filters {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      padding: 20px 0;
+      background: rgba(11, 7, 5, 0.82);
+      backdrop-filter: blur(14px) saturate(1.1);
+      -webkit-backdrop-filter: blur(14px) saturate(1.1);
+      border-bottom: 1px solid var(--line);
+    }
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+    }
+    .filter-label {
+      font-family: var(--serif-alt);
+      font-style: italic;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-right: 8px;
+      letter-spacing: 0.05em;
+    }
+    .chip {
+      appearance: none;
+      border: 1px solid var(--line-strong);
+      background: transparent;
+      color: var(--text-dim);
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 10px 18px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 280ms var(--ease);
+      position: relative;
+    }
+    .chip:hover {
+      color: var(--gold-soft);
+      border-color: var(--gold-dim);
+      background: rgba(198, 159, 106, 0.06);
+    }
+    .chip.is-active {
+      color: var(--bg-deep);
+      background: var(--gold);
+      border-color: var(--gold);
+      box-shadow: 0 0 0 4px rgba(198, 159, 106, 0.12);
+    }
+
+    /* ============================================
+       GRID
+       ============================================ */
+    .grid-section {
+      padding: 56px 0 96px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 26px;
+    }
+
+    /* ============================================
+       COCKTAIL CARD (style only, no data yet)
+       ============================================ */
+    .card {
+      position: relative;
+      background: linear-gradient(160deg, var(--bg-card) 0%, var(--bg-soft) 100%);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px 28px;
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      transition: transform 400ms var(--ease), box-shadow 400ms var(--ease), border-color 400ms var(--ease);
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(500px 200px at 100% 0%, rgba(198, 159, 106, 0.08), transparent 60%);
+      opacity: 0;
+      transition: opacity 400ms var(--ease);
+      pointer-events: none;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--line-strong);
+      box-shadow: var(--shadow-card-hover);
+    }
+    .card:hover::before { opacity: 1; }
+
+    .card-category {
+      display: inline-block;
+      font-family: var(--serif-alt);
+      font-style: italic;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .card-title {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1.7rem;
+      line-height: 1.15;
+      margin: 0 0 18px;
+      color: var(--text);
+    }
+    .card-divider {
+      width: 36px;
+      height: 1px;
+      background: var(--gold-dim);
+      margin: 0 0 20px;
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    .site-footer {
+      padding: 40px 0 60px;
+      border-top: 1px solid var(--line);
+      text-align: center;
+      color: var(--text-muted);
+      font-family: var(--serif-alt);
+      font-style: italic;
+      font-size: 0.95rem;
+    }
+    .site-footer .line {
+      display: block;
+      width: 80px;
+      height: 1px;
+      background: var(--gold-dim);
+      margin: 0 auto 18px;
+      opacity: 0.5;
+    }
+
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+    @media (max-width: 720px) {
+      .wrap { padding: 0 18px; }
+      .site-header { padding: 48px 0 28px; }
+      .filters { padding: 14px 0; }
+      .filter-label { display: none; }
+      .chip { padding: 8px 14px; font-size: 0.75rem; letter-spacing: 0.12em; }
+      .grid-section { padding: 36px 0 72px; }
+      .grid { grid-template-columns: 1fr; gap: 18px; }
+      .card { padding: 26px 22px 22px; }
+      .card-title { font-size: 1.45rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================
+       HEADER
+       ============================================ -->
+  <header class="site-header">
+    <div class="wrap">
+      <span class="brand-mark">Le Carnet du Barman</span>
+      <h1 class="site-title">Vingt Cocktails,<br /><em>un art du dosage</em></h1>
+      <p class="site-tagline">
+        Guide de recettes pour les classiques qui comptent — proportions, verrerie,
+        méthode et garniture. À consommer avec modération, à préparer avec précision.
+      </p>
+      <div class="divider-ornament" aria-hidden="true">
+        <span class="line"></span><span class="diamond"></span><span class="line"></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================
+       FILTERS
+       ============================================ -->
+  <nav class="filters" aria-label="Filtrer par catégorie">
+    <div class="wrap filter-bar">
+      <span class="filter-label">Sélection —</span>
+      <button class="chip is-active" data-filter="all" type="button">Tous</button>
+      <button class="chip" data-filter="classiques" type="button">Les Incontournables</button>
+      <button class="chip" data-filter="fruites" type="button">Rafraîchissants &amp; Fruités</button>
+      <button class="chip" data-filter="petillants" type="button">Pétillants &amp; Légers</button>
+      <button class="chip" data-filter="sophistiques" type="button">Poids Lourds &amp; Sophistiqués</button>
+    </div>
+  </nav>
+
+  <!-- ============================================
+       GRID (empty for now — cards injected later)
+       ============================================ -->
+  <main class="grid-section">
+    <div class="wrap">
+      <div id="grid" class="grid" role="list">
+        <!-- Cartes cocktails injectées ici -->
+      </div>
+    </div>
+  </main>
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <span class="line"></span>
+      L'abus d'alcool est dangereux pour la santé. À consommer avec modération.
+    </div>
+  </footer>
+
+  <script>
+    // ============================================
+    // FILTER LOGIC (skeleton — no cards yet)
+    // ============================================
+    (function () {
+      const chips = document.querySelectorAll('.chip');
+      const grid = document.getElementById('grid');
+
+      chips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          chips.forEach(c => c.classList.remove('is-active'));
+          chip.classList.add('is-active');
+
+          const filter = chip.dataset.filter;
+          const cards = grid.querySelectorAll('.card');
+          cards.forEach(card => {
+            const match = filter === 'all' || card.dataset.category === filter;
+            card.style.display = match ? '' : 'none';
+          });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
