@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Le Bar à Cuq — Bar-tabac à Cuq-Toulza (Tarn)</title>
+  <meta name="description" content="Le Bar à Cuq, bar-tabac convivial au 5 avenue de Castres à Cuq-Toulza : café dès 6h, bières artisanales, tapas et planches, soirées musicales chaque mois.">
+  <meta property="og:title" content="Le Bar à Cuq — Cuq-Toulza">
+  <meta property="og:description" content="Café dès 6h, bières artisanales, tapas et soirées musicales au cœur de Cuq-Toulza.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="theme-color" content="#f0440c">
+  <meta name="color-scheme" content="light">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;500;700&family=Lobster&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BarOrPub",
+    "name": "Le Bar à Cuq",
+    "telephone": "+33563721887",
+    "email": "lebaracuq@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "5 avenue de Castres",
+      "postalCode": "81470",
+      "addressLocality": "Cuq-Toulza",
+      "addressCountry": "FR"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": 43.56897, "longitude": 1.8856 },
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "06:00",
+      "closes": "21:00"
+    }],
+    "sameAs": ["https://www.facebook.com/lebaracuq/"]
+  }
+  </script>
+</head>
+<body>
+  <!-- Filtre « craie » qui donne au mot « Le Bar » le grain du logo -->
+  <svg class="sr-only" aria-hidden="true" focusable="false">
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="1" seed="4" result="bruit"/>
+      <feColorMatrix in="bruit" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -4 0 0 0 3" result="trous"/>
+      <feComposite in="SourceGraphic" in2="trous" operator="in"/>
+    </filter>
+  </svg>
+
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#accueil" aria-label="Le Bar à Cuq, retour en haut">
+        <span class="brand-script">Le Bar</span>
+        <span class="brand-block">à Cuq</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu">
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="sr-only">Ouvrir le menu</span>
+      </button>
+      <nav id="menu" class="site-nav" aria-label="Navigation principale">
+        <ul>
+          <li><a href="#le-bar">Le bar</a></li>
+          <li><a href="#carte">À la carte</a></li>
+          <li><a href="#soirees">Soirées</a></li>
+          <li><a href="#infos">Horaires &amp; accès</a></li>
+          <li><a class="nav-cta" href="tel:+33563721887">05 63 72 18 87</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Le verre de bière : fil conducteur du site. Il se remplit avec le défilement
+       et ses graduations mènent aux sections. Piloté par assets/js/main.js. -->
+  <aside class="pint" data-pint>
+    <button class="pint-glass" type="button" data-pint-next aria-label="Aller à la section suivante">
+      <svg viewBox="0 0 100 200" aria-hidden="true" focusable="false">
+        <defs>
+          <clipPath id="interieur-verre">
+            <path d="M9 12 L20 184 Q21 188 26 188 L74 188 Q79 188 80 184 L91 12 Z"/>
+          </clipPath>
+          <linearGradient id="biere" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#ffc233"/>
+            <stop offset="1" stop-color="#e57d00"/>
+          </linearGradient>
+        </defs>
+        <path class="pint-body" d="M5 10 L17 186 Q18 192 24 192 L76 192 Q82 192 83 186 L95 10 Z"/>
+        <g clip-path="url(#interieur-verre)">
+          <g class="pint-beer" data-pint-beer>
+            <path class="pint-wave" d="M-100 4 q12.5 -6 25 0 t25 0 t25 0 t25 0 t25 0 t25 0 t25 0 t25 0 t25 0 t25 0 t25 0 t25 0 V200 H-100 Z" fill="url(#biere)"/>
+            <circle class="bulle" cx="30" cy="170" r="1.6"/>
+            <circle class="bulle" cx="44" cy="176" r="1.1"/>
+            <circle class="bulle" cx="57" cy="168" r="1.8"/>
+            <circle class="bulle" cx="68" cy="178" r="1.2"/>
+            <circle class="bulle" cx="38" cy="182" r="1.4"/>
+            <circle class="bulle" cx="62" cy="184" r="1"/>
+          </g>
+          <g class="pint-foam" data-pint-foam>
+            <rect x="0" y="0" width="100" height="40" rx="3"/>
+            <circle cx="22" cy="6" r="3"/><circle cx="40" cy="9" r="2"/><circle cx="58" cy="5" r="2.6"/><circle cx="75" cy="8" r="2.2"/>
+          </g>
+        </g>
+        <g class="pint-crown" data-pint-crown>
+          <circle cx="18" cy="11" r="8"/><circle cx="32" cy="6" r="10"/><circle cx="50" cy="4" r="11"/>
+          <circle cx="68" cy="6" r="10"/><circle cx="82" cy="11" r="8"/>
+        </g>
+        <path class="pint-shine" d="M14 22 L22 170"/>
+      </svg>
+    </button>
+    <nav class="pint-ticks" aria-label="Graduations du verre">
+      <ol data-pint-ticks>
+        <li><a href="#le-bar" data-section="le-bar"><span>Le bar</span></a></li>
+        <li><a href="#carte" data-section="carte"><span>À la carte</span></a></li>
+        <li><a href="#soirees" data-section="soirees"><span>Soirées</span></a></li>
+        <li><a href="#infos" data-section="infos"><span>Horaires</span></a></li>
+      </ol>
+    </nav>
+    <p class="pint-label" data-pint-label aria-hidden="true">On vous sert ?</p>
+  </aside>
+
+  <main id="contenu">
+    <!-- Accueil -->
+    <section id="accueil" class="hero">
+      <div class="hero-bubbles" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <p class="eyebrow eyebrow-ink">Bar-tabac · Cuq-Toulza · Tarn</p>
+          <h1 class="logotype">
+            <span class="logotype-script">Le Bar</span>
+            <span class="logotype-block">À Cuq</span>
+          </h1>
+          <p class="hero-lead">Le café du matin, la mousse de fin de journée et les soirées qui font vivre le village. Au 5 avenue de Castres, on vous accueille dès 6h.</p>
+          <p class="open-status" data-open-status hidden></p>
+          <div class="hero-actions">
+            <a class="btn btn-ink" href="tel:+33563721887">Appeler le bar</a>
+            <a class="btn btn-outline-ink" href="https://www.google.com/maps/dir/?api=1&amp;destination=5+avenue+de+Castres+81470+Cuq-Toulza" target="_blank" rel="noopener">Itinéraire</a>
+          </div>
+          <p class="scroll-hint" aria-hidden="true">Faites défiler, on remplit votre verre</p>
+        </div>
+        <!-- Emplacement du verre en grand dans l'accueil (le verre s'y pose puis rejoint le côté de l'écran) -->
+        <div class="hero-glass-slot" data-pint-slot aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- Le bar -->
+    <section id="le-bar" class="section section-cream foam-top" data-pint-section>
+      <div class="container split">
+        <div>
+          <p class="eyebrow">Le bar</p>
+          <h2>Un lieu simple, chaleureux, <em>au cœur du village</em></h2>
+          <p>Entre la route de Toulouse et l'avenue de Castres, le Bar à Cuq est le point de rendez-vous de Cuq-Toulza. On y passe pour un café, on y reste pour une partie de discussion au comptoir, on y revient le soir entre amis.</p>
+          <p>Une équipe attentive, des produits choisis avec soin et une ambiance où chacun se sent chez lui : c'est tout ce qu'on demande à un bon bar de village.</p>
+        </div>
+        <!-- Remplacer par une vraie photo du bar : <img src="assets/img/bar.jpg" alt="…" width="800" height="600" loading="lazy"> -->
+        <figure class="photo-placeholder" aria-hidden="true">
+          <span>Photo du bar à venir</span>
+        </figure>
+      </div>
+    </section>
+
+    <!-- À la carte -->
+    <section id="carte" class="section section-orange" data-pint-section>
+      <div class="container">
+        <p class="eyebrow eyebrow-ink">À la carte</p>
+        <h2 class="title-cream">Ce qu'on vous sert</h2>
+        <ul class="cards">
+          <li class="card">
+            <svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8h14v5a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6V8Z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M7 2.5c0 1 1 1.5 1 2.5M11 2.5c0 1 1 1.5 1 2.5"/></svg>
+            <h3>Café &amp; petit matin</h3>
+            <p>Ouvert dès 6h pour le premier café avant le travail, servi au comptoir.</p>
+          </li>
+          <li class="card">
+            <svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h10v11a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8Z"/><path d="M15 11h2a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-2"/><path d="M5 8a2.5 2.5 0 0 1 2-4 3 3 0 0 1 5 0 2.5 2.5 0 0 1 3 4"/></svg>
+            <h3>Bières artisanales</h3>
+            <p>Une belle sélection de bières artisanales et traditionnelles, servies avec soin.</p>
+          </li>
+          <li class="card">
+            <svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 15h20l-2 4H4l-2-4Z"/><circle cx="7" cy="11" r="2.5"/><circle cx="13" cy="10" r="3"/><path d="M17 13l3-5"/></svg>
+            <h3>Tapas &amp; planches</h3>
+            <p>Planches de charcuterie et de fromages, tapas à partager pour l'apéro.</p>
+          </li>
+          <li class="card">
+            <svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 14h4"/></svg>
+            <h3>Tabac</h3>
+            <p>Le bar-tabac du village, ouvert du lundi au samedi dès le matin.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Soirées -->
+    <section id="soirees" class="section section-ink" data-pint-section>
+      <div class="container split">
+        <div>
+          <p class="eyebrow">Soirées</p>
+          <h2>Une soirée musicale <em>chaque mois</em></h2>
+          <p>Concerts, ambiance tapas et bonne humeur : une fois par mois, le Bar à Cuq se transforme en salle de fête pour le village et les alentours.</p>
+          <p>Les dates et les groupes sont annoncés sur notre page Facebook.</p>
+          <a class="btn btn-orange" href="https://www.facebook.com/lebaracuq/" target="_blank" rel="noopener">Voir les prochaines soirées</a>
+        </div>
+        <!-- Prochaine soirée : mettre à jour la date, le titre et le texte ci-dessous. -->
+        <article class="event-card" aria-labelledby="prochaine-soiree">
+          <p class="event-tag">Prochaine soirée</p>
+          <h3 id="prochaine-soiree">Date à annoncer</h3>
+          <p>Suivez-nous sur Facebook pour ne rien manquer.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Horaires & accès -->
+    <section id="infos" class="section section-cream foam-top" data-pint-section>
+      <div class="container split split-top">
+        <div>
+          <p class="eyebrow">Horaires &amp; accès</p>
+          <h2>Quand passer <em>trinquer</em></h2>
+          <!-- Horaires d'après Pages Jaunes : à confirmer par le bar. -->
+          <table class="hours">
+            <caption class="sr-only">Horaires d'ouverture</caption>
+            <tbody>
+              <tr data-day="1"><th scope="row">Lundi</th><td>6h – 21h</td></tr>
+              <tr data-day="2"><th scope="row">Mardi</th><td>6h – 21h</td></tr>
+              <tr data-day="3"><th scope="row">Mercredi</th><td>6h – 21h</td></tr>
+              <tr data-day="4"><th scope="row">Jeudi</th><td>6h – 21h</td></tr>
+              <tr data-day="5"><th scope="row">Vendredi</th><td>6h – 21h</td></tr>
+              <tr data-day="6"><th scope="row">Samedi</th><td>6h – 21h</td></tr>
+              <tr data-day="0"><th scope="row">Dimanche</th><td>Fermé</td></tr>
+            </tbody>
+          </table>
+          <address class="contact">
+            <p><strong>Le Bar à Cuq</strong><br>5 avenue de Castres<br>81470 Cuq-Toulza</p>
+            <p><a href="tel:+33563721887">05 63 72 18 87</a><br><a href="mailto:lebaracuq@gmail.com">lebaracuq@gmail.com</a></p>
+          </address>
+        </div>
+        <div class="map">
+          <iframe title="Plan d'accès au Bar à Cuq, 5 avenue de Castres à Cuq-Toulza"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=1.8786%2C43.5655%2C1.8926%2C43.5725&amp;layer=mapnik&amp;marker=43.56897%2C1.88560"
+            loading="lazy" width="600" height="420"></iframe>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=5+avenue+de+Castres+81470+Cuq-Toulza" target="_blank" rel="noopener">Ouvrir dans Google Maps</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-cheers" aria-hidden="true">Santé !</p>
+      <p>© <span data-year>2026</span> Le Bar à Cuq · 5 avenue de Castres, 81470 Cuq-Toulza · <a href="https://www.facebook.com/lebaracuq/" target="_blank" rel="noopener">Facebook</a></p>
+      <p class="footer-note">L'abus d'alcool est dangereux pour la santé, à consommer avec modération.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
